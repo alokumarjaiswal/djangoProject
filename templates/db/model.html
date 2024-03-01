@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K.R. Mangalam University Data</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .university {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid #007bff;
+        }
+        .school {
+            padding-left: 20px;
+            border-left: 2px dotted #0066cc;
+        }
+        .program {
+            background-color: #e9ecef;
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 3px solid #ffc107;
+        }
+        h2, h3, h4, h5, h6 {
+            color: #007bff;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        p, li {
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <h1>University Information</h1>
+    <div class="container">
+        {% if universities %}
+            {% for university in universities %}
+                <div class="university">
+                    <h2>{{ university.name }}</h2>
+                    <p>Location: {{ university.location }}</p>
+                    <p>Established: {{ university.established_year }}</p>
+                    {% if university.schools.all %}
+                        <h3>Schools</h3>
+                        {% for school in university.schools.all %}
+                            <div class="school">
+                                <h4>{{ school.name }}</h4>
+                                <p>Dean: {{ school.dean }}</p>
+                                {% if school.programs.all %}
+                                    <h5>Programs Offered</h5>
+                                    {% for program in school.programs.all %}
+                                        <div class="program">
+                                            <p>Program: {{ program.name }}</p>
+                                            <ul>
+                                                <li>Duration: {{ program.duration }} years</li>
+                                                <li>Fees: {{ program.fee }}</li>
+                                            </ul>
+                                            {% if program.students.all %}
+                                                <h6>Enrolled Students</h6>
+                                                <ul>
+                                                    {% for student in program.students.all %}
+                                                        <li>{{ student.name }} - {{ student.roll_no }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% else %}
+                                                <p>No enrolled students.</p>
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <p>No programs offered.</p>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No schools found.</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No university data available.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

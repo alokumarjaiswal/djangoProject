@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hi</title>
+    <link rel="stylesheet" href="{% static 'formDB/styles.css' %}" type="text/css">
+</head>
+<body>
+
+{% block content %}
+    <h1>Contact</h1>
+
+    <form action="{% url 'contact' %}" method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}
+</body>
+</html>
