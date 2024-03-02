@@ -5,12 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Hi</title>
-    <link rel="stylesheet" href="{% static 'formDB/styles.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'formDB/contact.css' %}" type="text/css">
 </head>
 <body>
 
 {% block content %}
-    <h1>Contact</h1>
+    <h1>contact form</h1>
 
     <form action="{% url 'contact' %}" method="post">
         {% csrf_token %}

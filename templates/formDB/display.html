@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        h1 {
+            margin-top: 50px;
+            color: #2ecc71;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            margin-top: 20px;
+            color: #3498db;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>submissions</h1>
+    <h2> name    |    mobile    |    e-mail    |    message</h2>
+    <ul>
+        {% for contact in contacts %}
+            <li>{{ contact.name }}  |  {{ contact.mobile }}  |  {{ contact.email }}  |  {{ contact.message }}</li>
+        {% endfor %}
+    </ul>
+    <footer>
+        <a href="{% url 'contact' %}">new response?</a>
+    </footer>
+</body>
+</html>

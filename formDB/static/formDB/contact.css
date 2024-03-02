@@ -1,5 +1,5 @@
 form {
-    width: 80%;
+width: 80%;
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
@@ -8,16 +8,12 @@ form {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-
 h1 {
     text-align: center;
-    color: #333;
+    color: #2ecc71;
 }
 
-
-input[type="text"],
-input[type="email"],
-textarea {
+input[type="text"], input[type="email"], textarea {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
@@ -26,7 +22,6 @@ textarea {
     border-radius: 5px;
     box-sizing: border-box;
 }
-
 
 button[type="submit"] {
     width: 100%;
@@ -44,10 +39,8 @@ button[type="submit"]:hover {
     background-color: #2980b9;
 }
 
-
 label {
     display: block;
     margin-bottom: 5px;
-    color: #333;
     font-weight: bold;
 }

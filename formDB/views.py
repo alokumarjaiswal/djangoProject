@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .forms import ContactForm
+
+from .models import Contact
 
 
 # Create your views here.
@@ -15,3 +17,8 @@ def contact(request):
         form = ContactForm()
 
     return render(request, 'formDB/contact.html', {'form': form})
+
+
+def display(request):
+    contacts = Contact.objects.all()
+    return render(request, 'formDB/display.html', {'contacts': contacts})
